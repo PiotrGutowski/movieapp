@@ -1,0 +1,6 @@
+<div class="m-10">
+  <button (click)="back()" class="mb-5"><- Back</button>
+  <app-movie-profile-view
+    [movie]="movie$ | async"
+    [lastDisplayedMovies]="lastDisplayedMovies"></app-movie-profile-view>
+</div>

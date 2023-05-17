@@ -1,0 +1,10 @@
+<div class="m-10">
+  <app-search
+    (search)="search($event)"
+    [searchData]="searchParams"></app-search>
+  <app-movies-list-view
+    [movies]="movies$ | async"
+    [currentPage]="currentPage"
+    (selectMovie)="selectMovie($event)"
+    (pageChanged)="pageChanged($event)"></app-movies-list-view>
+</div>

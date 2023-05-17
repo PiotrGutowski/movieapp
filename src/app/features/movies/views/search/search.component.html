@@ -1,0 +1,23 @@
+<div class="grid lg:grid-cols-3 gap-x-6 justify-center" [formGroup]="form">
+  <mat-form-field class="lg:w-auto w-96">
+    <input matInput formControlName="title" placeholder="Title" />
+  </mat-form-field>
+  <mat-form-field class="lg:w-auto w-96">
+    <input matInput formControlName="year" placeholder="Year" />
+    <mat-error>Only numbers</mat-error>
+  </mat-form-field>
+  <mat-form-field class="lg:w-auto w-96">
+    <mat-select formControlName="type" placeholder="Type">
+      <mat-option *ngFor="let type of types" [value]="type">
+        {{ type }}
+      </mat-option>
+    </mat-select>
+    <button
+      *ngIf="form.controls.type.value"
+      matSuffix
+      mat-icon-button
+      (click)="form.controls.type.setValue(''); $event.stopPropagation()">
+      <mat-icon>cancel</mat-icon>
+    </button>
+  </mat-form-field>
+</div>

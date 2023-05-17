@@ -1,0 +1,120 @@
+{
+  "root": true,
+  "ignorePatterns": ["projects/**/*"],
+  "env": {
+    "jasmine": true
+  },
+  "plugins": ["@typescript-eslint"],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "parserOptions": {
+        "project": ["./tsconfig.json"]
+      },
+      "extends": [
+        "eslint:recommended",
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:prettier/recommended"
+      ],
+      "rules": {
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "app",
+            "style": "kebab-case"
+          }
+        ],
+        "@typescript-eslint/explicit-member-accessibility": [
+          "error",
+          {
+            "accessibility": "explicit",
+            "overrides": {
+              "accessors": "explicit",
+              "constructors": "no-public",
+              "methods": "explicit",
+              "properties": "explicit",
+              "parameterProperties": "explicit"
+            }
+          }
+        ],
+        "@typescript-eslint/explicit-function-return-type": "error",
+        "@typescript-eslint/no-explicit-any": "error",
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "memberLike",
+            "format": ["strictCamelCase"],
+            "modifiers": ["public"]
+          },
+          { "selector": "variableLike", "format": ["camelCase"] },
+          {
+            "selector": "memberLike",
+            "modifiers": ["private"],
+            "format": ["camelCase"],
+            "leadingUnderscore": "require"
+          },
+          {
+            "selector": "variable",
+            "types": ["boolean"],
+            "format": ["PascalCase"],
+            "prefix": ["is", "should", "has", "can", "did", "will"]
+          },
+          {
+            "selector": "variable",
+            "format": ["strictCamelCase", "UPPER_CASE"]
+          }
+        ],
+        "no-console": "error",
+        "@typescript-eslint/no-unused-vars": "error",
+        "no-unused-private-class-members": "error",
+        "block-scoped-var": "error",
+        "camelcase": "warn",
+        "default-case": "error",
+        "dot-notation": "warn",
+        "eqeqeq": "error",
+        "no-empty": "error",
+        "no-empty-function": [
+          "error",
+          {
+            "allow": ["constructors"]
+          }
+        ],
+        "no-extra-boolean-cast": "warn",
+        "no-global-assign": "error",
+        "no-lonely-if": "error",
+        "dot-location": ["error", "property"],
+        "no-case-declarations": "off"
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": [
+        "plugin:prettier/recommended",
+        "plugin:@angular-eslint/template/recommended"
+      ],
+      "rules": {
+        "prettier/prettier": [
+          "error",
+          {
+            "parser": "angular"
+          }
+        ]
+      }
+    },
+    {
+      "env": {
+        "jasmine": true
+      },
+      "files": ["**/*.spec.js"]
+    }
+  ]
+}
