@@ -1,43 +1,45 @@
-<div *ngIf="movie">
-  <div class="flex">
-    <div class="w-96">
-      <img
-        *ngIf="movie.Poster !== notAvailable"
-        [src]="movie.Poster"
-        class="max-w-[85%] max-h-[80vh] mb-5 mr-20"
-        alt="Poster" />
+<mat-card class="p-10">
+  <div *ngIf="movie">
+    <div class="flex">
+      <div class="w-96">
+        <img
+          *ngIf="movie.Poster !== notAvailable"
+          [src]="movie.Poster"
+          class="max-w-[85%] max-h-[80vh] mb-5 mr-20"
+          alt="Poster" />
+      </div>
+      <div>
+        <p class="font-bold">Recently searched:</p>
+        <ng-container *ngFor="let item of lastDisplayedMovies | keyvalue">
+          <p>{{ item.value.Title }}</p>
+        </ng-container>
+      </div>
     </div>
+    <p>Title: {{ movie.Title }}</p>
+    <p>Year: {{ movie.Year }}</p>
+    <p>Rated: {{ movie.Rated }}</p>
+    <p>Released: {{ movie.Released }}</p>
+    <p>Runtime: {{ movie.Runtime }}</p>
+    <p>Genre: {{ movie.Genre }}</p>
+    <p>Director: {{ movie.Director }}</p>
+    <p>Writer: {{ movie.Writer }}</p>
+    <p>Actors: {{ movie.Actors }}</p>
+    <p>Plot: {{ movie.Plot }}</p>
+    <p>Language: {{ movie.Language }}</p>
+    <p>Country: {{ movie.Country }}</p>
+    <p>Awards: {{ movie.Awards }}</p>
+    <p>imdbRating: {{ movie.imdbRating }}</p>
+    <p>imdbVotes: {{ movie.imdbVotes }}</p>
+    <p>Metascore: {{ movie.Metascore }}</p>
+    <p>totalSeasons: {{ movie.totalSeasons }}</p>
     <div>
-      <p class="font-bold">Recently searched:</p>
-      <ng-container *ngFor="let item of lastDisplayedMovies | keyvalue">
-        <p>{{ item.value.Title }}</p>
+      Rating:
+      <ng-container *ngFor="let item of movie.Ratings">
+        <div>
+          <span>{{ item.Source }}</span
+          >: <span>{{ item.Value }}</span>
+        </div>
       </ng-container>
     </div>
   </div>
-  <p>Title: {{ movie.Title }}</p>
-  <p>Year: {{ movie.Year }}</p>
-  <p>Rated: {{ movie.Rated }}</p>
-  <p>Released: {{ movie.Released }}</p>
-  <p>Runtime: {{ movie.Runtime }}</p>
-  <p>Genre: {{ movie.Genre }}</p>
-  <p>Director: {{ movie.Director }}</p>
-  <p>Writer: {{ movie.Writer }}</p>
-  <p>Actors: {{ movie.Actors }}</p>
-  <p>Plot: {{ movie.Plot }}</p>
-  <p>Language: {{ movie.Language }}</p>
-  <p>Country: {{ movie.Country }}</p>
-  <p>Awards: {{ movie.Awards }}</p>
-  <p>imdbRating: {{ movie.imdbRating }}</p>
-  <p>imdbVotes: {{ movie.imdbVotes }}</p>
-  <p>Metascore: {{ movie.Metascore }}</p>
-  <p>totalSeasons: {{ movie.totalSeasons }}</p>
-  <div>
-    Rating:
-    <ng-container *ngFor="let item of movie.Ratings">
-      <div>
-        <span>{{ item.Source }}</span
-        >: <span>{{ item.Value }}</span>
-      </div>
-    </ng-container>
-  </div>
-</div>
+</mat-card>

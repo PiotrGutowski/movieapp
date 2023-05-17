@@ -15,6 +15,7 @@ const materialModules = [
   MatIconModule,
   MatCardModule,
   MatSelectModule,
+  MatCardModule,
 ];
 
 @NgModule({
