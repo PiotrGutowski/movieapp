@@ -41,12 +41,7 @@ export class MovieProfileComponent implements OnInit {
       }
     });
 
-    this._actions$
-      .pipe(ofActionSuccessful(Movies.FetchMovie), untilDestroyed(this))
-      .subscribe(() => {
-        this._spinnerService.hide();
-      });
-
+    this._registerStoreActions();
     this.lastDisplayedMovies = this._store.selectSnapshot(
       MovieState.selectedMovies
     );
@@ -57,5 +52,13 @@ export class MovieProfileComponent implements OnInit {
 
   public back(): void {
     this._location.back();
+  }
+
+  private _registerStoreActions(): void {
+    this._actions$
+      .pipe(ofActionSuccessful(Movies.FetchMovie), untilDestroyed(this))
+      .subscribe(() => {
+        this._spinnerService.hide();
+      });
   }
 }

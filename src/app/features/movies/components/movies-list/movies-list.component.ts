@@ -32,12 +32,7 @@ export class MoviesListComponent implements OnInit {
     private _actions$: Actions
   ) {}
   public ngOnInit(): void {
-    this._actions$
-      .pipe(ofActionSuccessful(Movies.FetchMovies), untilDestroyed(this))
-      .subscribe(() => {
-        this._spinnerService.hide();
-      });
-
+    this._registerStoreActions();
     this.searchParams = this._store.selectSnapshot(MovieState.searchParams);
     if (this.searchParams) {
       this.currentPage = this.searchParams.page ?? INIT_PAGE;
@@ -69,5 +64,13 @@ export class MoviesListComponent implements OnInit {
     };
     this._store.dispatch(new Movies.StoreSearchPrams(params));
     this._store.dispatch(new Movies.FetchMovies(params));
+  }
+
+  private _registerStoreActions(): void {
+    this._actions$
+      .pipe(ofActionSuccessful(Movies.FetchMovies), untilDestroyed(this))
+      .subscribe(() => {
+        this._spinnerService.hide();
+      });
   }
 }
