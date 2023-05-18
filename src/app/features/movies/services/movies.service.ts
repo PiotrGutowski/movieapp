@@ -18,7 +18,7 @@ export class MoviesService {
     });
   }
 
-  public getMovieByTitle(id: string): Observable<MovieData> {
+  public getMovieById(id: string): Observable<MovieData> {
     return this._http.get<MovieData>(`${environment.apiUrl}i=${id}`);
   }
 }

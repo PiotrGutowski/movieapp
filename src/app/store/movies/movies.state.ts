@@ -63,7 +63,7 @@ export class MovieState {
     ctx: StateContext<MoviesStateModel>,
     { id }: Movies.FetchMovie
   ): Observable<MovieData> {
-    return this._moviesService.getMovieByTitle(id).pipe(
+    return this._moviesService.getMovieById(id).pipe(
       tap((data) => {
         ctx.patchState({
           movieData: { ...ctx.getState()?.movieData, [data.imdbID]: data },
