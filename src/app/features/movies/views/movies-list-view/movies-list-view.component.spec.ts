@@ -26,11 +26,11 @@ describe('MoviesListViewComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should update displayedColumns based on bodyWidth', () => {
-    component.bodyWidth = 500;
+  it('should update displayedColumns based on pageWidth', () => {
+    component.pageWidth = 500;
     expect(component.displayedColumns).toEqual(['title']);
 
-    component.bodyWidth = 700;
+    component.pageWidth = 700;
     expect(component.displayedColumns).toEqual(['id', 'title', 'type', 'year']);
   });
 

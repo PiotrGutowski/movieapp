@@ -30,7 +30,7 @@ export class MoviesListViewComponent {
 
   constructor(private _changeDetector: ChangeDetectorRef) {}
 
-  public set bodyWidth(value: number) {
+  public set pageWidth(value: number) {
     if (value < SMALL_DEVICE) {
       this.displayedColumns = ['title'];
       this._changeDetector.detectChanges();
