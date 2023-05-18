@@ -49,7 +49,8 @@ export class MoviesListComponent implements OnInit {
     this.searchParams = this._store.selectSnapshot(MovieState.searchParams);
     if (this.searchParams) {
       this.searchParams.page = (event.pageIndex + 1).toString();
-      this._store.dispatch(new Movies.FetchMovies(this.searchParams));
+      this.currentPage = this.searchParams.page;
+      this._triggerStoreActions(this.searchParams);
     }
   }
 
@@ -62,8 +63,7 @@ export class MoviesListComponent implements OnInit {
       type: searchData.type ?? '',
       page: INIT_PAGE,
     };
-    this._store.dispatch(new Movies.StoreSearchPrams(params));
-    this._store.dispatch(new Movies.FetchMovies(params));
+    this._triggerStoreActions(params);
   }
 
   private _registerStoreActions(): void {
@@ -72,5 +72,10 @@ export class MoviesListComponent implements OnInit {
       .subscribe(() => {
         this._spinnerService.hide();
       });
+  }
+
+  private _triggerStoreActions(params: SearchParams): void {
+    this._store.dispatch(new Movies.StoreSearchPrams(params));
+    this._store.dispatch(new Movies.FetchMovies(params));
   }
 }

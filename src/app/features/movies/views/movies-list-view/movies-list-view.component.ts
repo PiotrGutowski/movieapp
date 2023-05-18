@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { MoviesData, MoviesList } from '../../../../core/models/backend.models';
-import { INIT_PAGE, SMALL_DEVICE } from '../../consts/consts';
+import { INIT_PAGE, NOT_AVAILABLE, SMALL_DEVICE } from '../../consts/consts';
 
 @Component({
   selector: 'app-movies-list-view',
@@ -16,7 +16,7 @@ import { INIT_PAGE, SMALL_DEVICE } from '../../consts/consts';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MoviesListViewComponent {
-  public displayedColumns = ['id', 'title', 'type', 'year'];
+  public displayedColumns = ['poster', 'id', 'title', 'type', 'year'];
 
   @Input() public movies!: MoviesData | null;
 
@@ -28,6 +28,8 @@ export class MoviesListViewComponent {
 
   public totalRows = 0;
 
+  public notAvailable = NOT_AVAILABLE;
+
   constructor(private _changeDetector: ChangeDetectorRef) {}
 
   public set pageWidth(value: number) {
@@ -35,7 +37,7 @@ export class MoviesListViewComponent {
       this.displayedColumns = ['title'];
       this._changeDetector.detectChanges();
     } else if (this.displayedColumns.length === 1 && value > SMALL_DEVICE) {
-      this.displayedColumns = ['id', 'title', 'type', 'year'];
+      this.displayedColumns = ['poster', 'id', 'title', 'type', 'year'];
       this._changeDetector.detectChanges();
     }
   }

@@ -1,5 +1,18 @@
 <div watchSize (sizeChange)="pageWidth = $event.width">
   <mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="poster">
+      <mat-header-cell class="flex-[0_0_80px]" *matHeaderCellDef>
+        Poster
+      </mat-header-cell>
+      <mat-cell class="flex-[0_0_80px]" *matCellDef="let element">
+        <img
+          class="h-11"
+          *ngIf="element.Poster !== notAvailable"
+          [src]="element.Poster"
+          alt="Poster" />
+      </mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
       <mat-cell *matCellDef="let element">

@@ -31,7 +31,13 @@ describe('MoviesListViewComponent', () => {
     expect(component.displayedColumns).toEqual(['title']);
 
     component.pageWidth = 700;
-    expect(component.displayedColumns).toEqual(['id', 'title', 'type', 'year']);
+    expect(component.displayedColumns).toEqual([
+      'poster',
+      'id',
+      'title',
+      'type',
+      'year',
+    ]);
   });
 
   it('should emit selectMovie event with the movie id', () => {
